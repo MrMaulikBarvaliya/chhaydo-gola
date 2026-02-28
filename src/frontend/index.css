@@ -1,0 +1,211 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@400;500;600;700&family=Baloo+2:wght@400;500;600;700;800&display=swap');
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Warm cream/rose palette for Gola shop */
+    --background: 0.98 0.008 60;
+    --foreground: 0.18 0.04 30;
+
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.04 30;
+
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.04 30;
+
+    /* Deep rose primary */
+    --primary: 0.52 0.22 10;
+    --primary-foreground: 0.98 0.01 50;
+
+    --secondary: 0.96 0.03 60;
+    --secondary-foreground: 0.28 0.06 30;
+
+    --muted: 0.95 0.02 50;
+    --muted-foreground: 0.52 0.04 40;
+
+    /* Saffron accent */
+    --accent: 0.82 0.16 55;
+    --accent-foreground: 0.18 0.05 30;
+
+    --destructive: 0.55 0.22 25;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.04 50;
+    --input: 0.90 0.03 50;
+    --ring: 0.52 0.22 10;
+
+    /* Chart colors */
+    --chart-1: 0.52 0.22 10;
+    --chart-2: 0.70 0.18 50;
+    --chart-3: 0.65 0.16 145;
+    --chart-4: 0.60 0.18 230;
+    --chart-5: 0.75 0.20 80;
+
+    /* Sidebar */
+    --sidebar: 0.97 0.01 50;
+    --sidebar-foreground: 0.18 0.04 30;
+    --sidebar-primary: 0.52 0.22 10;
+    --sidebar-primary-foreground: 0.98 0.01 50;
+    --sidebar-accent: 0.93 0.04 55;
+    --sidebar-accent-foreground: 0.28 0.06 30;
+    --sidebar-border: 0.88 0.04 50;
+    --sidebar-ring: 0.52 0.22 10;
+
+    /* Gola-specific tokens */
+    --gola-pink: 0.72 0.18 5;
+    --gola-pink-light: 0.95 0.06 5;
+    --gola-pink-row: 0.96 0.04 10;
+    --gola-saffron: 0.80 0.18 55;
+    --gola-cream: 0.98 0.01 80;
+    --gola-deep: 0.40 0.16 15;
+  }
+
+  .dark {
+    --background: 0.12 0.03 20;
+    --foreground: 0.96 0.01 60;
+    --card: 0.18 0.04 20;
+    --card-foreground: 0.96 0.01 60;
+    --popover: 0.22 0.04 20;
+    --popover-foreground: 0.96 0.01 60;
+    --primary: 0.70 0.20 8;
+    --primary-foreground: 0.12 0.02 20;
+    --secondary: 0.25 0.04 20;
+    --secondary-foreground: 0.96 0.01 60;
+    --muted: 0.25 0.04 20;
+    --muted-foreground: 0.65 0.04 40;
+    --accent: 0.75 0.18 55;
+    --accent-foreground: 0.12 0.02 20;
+    --destructive: 0.65 0.20 22;
+    --destructive-foreground: 0.985 0 0;
+    --border: 1 0 0 / 12%;
+    --input: 1 0 0 / 15%;
+    --ring: 0.65 0.18 8;
+    --chart-1: 0.70 0.22 8;
+    --chart-2: 0.75 0.16 55;
+    --chart-3: 0.65 0.16 145;
+    --chart-4: 0.62 0.18 230;
+    --chart-5: 0.78 0.20 80;
+    --sidebar: 0.16 0.04 20;
+    --sidebar-foreground: 0.96 0.01 60;
+    --sidebar-primary: 0.70 0.20 8;
+    --sidebar-primary-foreground: 0.12 0.02 20;
+    --sidebar-accent: 0.25 0.04 20;
+    --sidebar-accent-foreground: 0.96 0.01 60;
+    --sidebar-border: 1 0 0 / 12%;
+    --sidebar-ring: 0.65 0.18 8;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Baloo 2', 'Noto Sans Gujarati', sans-serif;
+  }
+
+  .gujarati-text {
+    font-family: 'Noto Sans Gujarati', 'Baloo 2', sans-serif;
+  }
+}
+
+@layer utilities {
+  .gola-header-gradient {
+    background: linear-gradient(135deg, oklch(var(--gola-pink)) 0%, oklch(var(--primary)) 50%, oklch(var(--gola-deep)) 100%);
+  }
+
+  .gola-card-shadow {
+    box-shadow: 0 4px 20px oklch(var(--primary) / 0.12), 0 1px 4px oklch(var(--primary) / 0.08);
+  }
+
+  .menu-row-even {
+    background-color: oklch(var(--gola-pink-row));
+  }
+
+  .menu-row-odd {
+    background-color: oklch(1 0 0);
+  }
+
+  .price-cell-hover {
+    @apply cursor-pointer transition-all duration-150;
+  }
+
+  .price-cell-hover:hover {
+    background-color: oklch(var(--primary) / 0.12) !important;
+    transform: scale(1.05);
+  }
+
+  .status-pending {
+    background-color: oklch(0.90 0.12 80);
+    color: oklch(0.40 0.10 70);
+    border: 1px solid oklch(0.75 0.14 75);
+  }
+
+  .status-preparing {
+    background-color: oklch(0.88 0.10 220);
+    color: oklch(0.38 0.12 220);
+    border: 1px solid oklch(0.72 0.14 220);
+  }
+
+  .status-ready {
+    background-color: oklch(0.88 0.10 145);
+    color: oklch(0.38 0.12 145);
+    border: 1px solid oklch(0.68 0.14 140);
+  }
+
+  .status-served {
+    background-color: oklch(0.90 0.05 145);
+    color: oklch(0.48 0.08 145);
+    border: 1px solid oklch(0.72 0.08 145);
+  }
+
+  .status-cancelled {
+    background-color: oklch(0.90 0.03 0);
+    color: oklch(0.48 0.05 0);
+    border: 1px solid oklch(0.72 0.05 0);
+  }
+}
+
+/* Scroll animations */
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-slide-up {
+  animation: slideUpFade 0.4s ease-out both;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out both;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out both;
+}
+
+.stagger-1 { animation-delay: 0.05s; }
+.stagger-2 { animation-delay: 0.10s; }
+.stagger-3 { animation-delay: 0.15s; }
+.stagger-4 { animation-delay: 0.20s; }
